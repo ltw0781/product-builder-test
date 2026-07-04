@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ATELIER AI | Personal Stylist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#645d56",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1a1c1c",
+                        "tertiary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#6a635c",
+                        "secondary-fixed": "#ebe1d8",
+                        "primary-container": "#1c1b1b",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-container": "#a08000",
+                        "surface-container": "#eeeeee",
+                        "background": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed-variant": "#4c463f",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "surface": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#c4c7c7",
+                        "primary": "#000000",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-tint": "#5f5e5e",
+                        "outline": "#747878",
+                        "tertiary-container": "#241a00",
+                        "surface-dim": "#dadada",
+                        "on-secondary-fixed": "#1f1b16",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "secondary-fixed-dim": "#cec5bc",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-primary-container": "#858383",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#ebe1d8",
+                        "on-surface-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "stack-sm": "12px",
+                        "base": "8px",
+                        "container-padding": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "38px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .editorial-shadow {
+            box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-background dark:bg-background flex justify-between items-center w-full px-container-padding h-16">
+        <div class="flex items-center gap-4">
+            <button
+                class="text-primary dark:text-on-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <h1
+                class="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-on-primary-fixed uppercase">
+                ATELIER AI</h1>
+        </div>
+        <div class="flex items-center">
+            <button
+                class="text-primary dark:text-on-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        </div>
+    </header>
+    <main class="pt-16 pb-24">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[663px] md:h-[751px] overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center"
+                data-alt="A cinematic high-end fashion editorial photograph featuring a sophisticated model in a structural charcoal grey blazer standing against a minimalist champagne-colored architectural backdrop. The lighting is soft and directional, creating elegant shadows. The aesthetic is clean, luxurious, and modern, reflecting a premium styling service."
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJtANW-n23airSSy80HWcHndySGw9zULWuspywj_io22nQxP6crOv3E0LT5rAbe_4oK2VQjzjFqPcg2IR6ydbNrNm77JbghUxvaEHg5aduRkOudNqJmxEnAB1LISn34RFGb9TvtyiV-cnvXYO0pwHXA6uz0kpHUGE0lhFdm0LUCuVxxxBPaGtbaQ7c9QE415avyWHfqVYWUa4n6kaSzdr-Xwe3pbehFaxw4VxqhHjIm1FpGFTolSY7QchnI83TwvzhELd1nXSb')">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60">
+            </div>
+            <div class="absolute bottom-0 left-0 w-full p-container-padding mb-8">
+                <div class="max-w-xl animate-fade-in-up">
+                    <h2
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4 leading-tight">
+                        Find Your <br />Perfect Style
+                    </h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-sm">
+                        Unlock a curated wardrobe tailored to your unique silhouette and aesthetic preferences.
+                    </p>
+                    <button
+                        class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:opacity-90 transition-all transform active:scale-95 editorial-shadow">
+                        Start Diagnosis
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- AI Analysis Explanation (Editorial Cards) -->
+        <section class="px-container-padding py-stack-lg">
+            <div class="flex flex-col gap-base mb-stack-md text-center">
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em]">The
+                    Technology</span>
+                <h3 class="font-headline-md text-headline-md text-primary">How ATELIER AI Works</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-container-padding">
+                <!-- Step 1 -->
+                <div
+                    class="group flex flex-col items-start p-container-padding bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-lg">
+                    <div
+                        class="w-12 h-12 flex items-center justify-center bg-secondary-container text-on-secondary-container rounded-full mb-6">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </div>
+                    <h4 class="font-label-md text-label-md text-primary mb-2">1. VISUAL CAPTURE</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Upload 3 photos representing your current style. Our vision model analyzes silhouettes,
+                        textures, and color palettes.
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div
+                    class="group flex flex-col items-start p-container-padding bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-lg">
+                    <div
+                        class="w-12 h-12 flex items-center justify-center bg-secondary-container text-on-secondary-container rounded-full mb-6">
+                        <span class="material-symbols-outlined">psychology</span>
+                    </div>
+                    <h4 class="font-label-md text-label-md text-primary mb-2">2. NEURAL MAPPING</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Our AI maps your data against thousands of runway looks and timeless aesthetic archetypes to
+                        find your unique 'Style DNA'.
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div
+                    class="group flex flex-col items-start p-container-padding bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-lg">
+                    <div
+                        class="w-12 h-12 flex items-center justify-center bg-secondary-container text-on-secondary-container rounded-full mb-6">
+                        <span class="material-symbols-outlined">auto_awesome</span>
+                    </div>
+                    <h4 class="font-label-md text-label-md text-primary mb-2">3. CURATED FEED</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Receive a personalized digital atelier updated weekly with items that match your fit and elevate
+                        your daily look.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Wardrobe Slot (Unique Component) -->
+        <section class="px-container-padding py-stack-lg bg-secondary-fixed/30">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-stack-lg">
+                <div class="w-full md:w-1/2 aspect-[4/5] relative">
+                    <div
+                        class="absolute inset-0 border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center bg-background/50 group cursor-pointer hover:bg-white transition-colors duration-500">
+                        <span
+                            class="material-symbols-outlined text-outline text-5xl mb-4 group-hover:scale-110 transition-transform">add_circle</span>
+                        <p class="font-label-md text-label-md text-outline uppercase tracking-widest">Awaiting Your
+                            Choice</p>
+                        <p class="font-label-sm text-label-sm text-outline-variant mt-2">Personalized Recommendation</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-6">
+                    <h3 class="font-headline-md text-headline-md text-primary">Your First Wardrobe Slot</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        AI styling is more than just suggestions. It's about filling the gaps in your existing
+                        collection with pieces that bring everything together. Start your diagnosis to unlock this slot.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            COLOR HARMONY ANALYSIS
+                        </li>
+                        <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            PROPORTION MATCHING
+                        </li>
+                        <li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            OCCASION-BASED SCORING
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 w-full z-50 flex justify-around items-center px-gutter py-base bg-background/80 backdrop-blur-md border-t border-outline-variant dark:border-on-secondary-fixed-variant rounded-t-xl shadow-sm">
+        <a class="flex flex-col items-center justify-center text-primary dark:text-on-primary-fixed font-bold translate-y-[-2px] transition-all duration-300"
+            href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-widest mt-1">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-primary-fixed"
+            href="#">
+            <span class="material-symbols-outlined">photo_camera</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-widest mt-1">Diagnosis</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-primary-fixed"
+            href="#">
+            <span class="material-symbols-outlined">auto_awesome</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-widest mt-1">Stylist</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-on-primary-fixed"
+            href="#">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="font-label-sm text-label-sm uppercase tracking-widest mt-1">Archive</span>
+        </a>
+    </nav>
+    <script>
+        // Simple micro-interactions
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.classList.add('scale-95');
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.classList.remove('scale-95');
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.classList.remove('scale-95');
+            });
+        });
+
+        // Intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.group, h2, h3').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
